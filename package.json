@@ -34,6 +34,7 @@
     "@legendapp/motion": "^2.4.0",
     "@react-navigation/native": "^6.0.2",
     "babel-plugin-module-resolver": "^5.0.2",
+    "cz-conventional-changelog": "^3.3.0",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "expo": "~51.0.28",
@@ -82,5 +83,10 @@
     "typescript": "~5.3.3"
   },
   "private": true,
-  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

@@ -21,9 +21,7 @@ import { FlatList } from "react-native";
 
 export default function ClassesScreen() {
   const currentClassRoomToday = useAtomValue(currentClassRoomByDateAtom);
-
   const todayTitle = useAtomValue(formattedDateAtom);
-
   const refreshDate = useSetAtom(currentDateAtom);
 
   useFocusEffect(
