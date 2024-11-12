@@ -1,4 +1,3 @@
-
 import { nextDeparturesAtom } from "@/atoms/itinenary";
 import { Box } from "@/components/ui/box";
 import { Card } from "@/components/ui/card";
@@ -13,12 +12,20 @@ import React from "react";
 import { FlatList } from "react-native";
 import { Text } from "../ui/text";
 
-
-
-
-
-
-
+export function NextDepartureListIem({
+  departure,
+  arrival,
+}: {
+  departure: string;
+  arrival: string;
+}) {
+  return (
+    <Box className="flex-row justify-between">
+      <Text>{departure}</Text>
+      <Text>{arrival}</Text>
+    </Box>
+  );
+}
 
 export function NextDeparturesList() {
   const nextDepartures = useAtomValue(nextDeparturesAtom);
@@ -34,7 +41,11 @@ export function NextDeparturesList() {
     <>
       <HStack className="mt-20 items-center" space="sm">
         <Icon as={Clock} size="xl" />
-        <Heading testID="next_departures_title" size="xl" className="flex justify-center items-center  ">
+        <Heading
+          testID="next_departures_title"
+          size="xl"
+          className="flex justify-center items-center  "
+        >
           Próximos horários
         </Heading>
       </HStack>
@@ -47,6 +58,7 @@ export function NextDeparturesList() {
             </Box>
 
             <FlatList
+              testID="next_departures_list"
               style={{ maxHeight: 100 }}
               keyExtractor={({ departure, arrival }, index) =>
                 `${index}-${departure}-${arrival}`
@@ -54,10 +66,10 @@ export function NextDeparturesList() {
               data={parsedNextDeparturesList}
               ItemSeparatorComponent={() => <Box className="mt-4" />}
               renderItem={({ item }) => (
-                <Box className="flex-row justify-between">
-                  <Text>{item.departure}</Text>
-                  <Text>{item.arrival}</Text>
-                </Box>
+                <NextDepartureListIem
+                  arrival={item.arrival}
+                  departure={item.departure}
+                />
               )}
               ListEmptyComponent={() => (
                 <Box className="flex justify-center items-center w-full h-[100px]">
@@ -65,7 +77,6 @@ export function NextDeparturesList() {
                 </Box>
               )}
             />
-
           </VStack>
         </Card>
       </Box>

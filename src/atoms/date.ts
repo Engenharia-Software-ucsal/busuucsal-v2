@@ -1,14 +1,11 @@
-import { format, getDay } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { getDay } from "date-fns";
 import { atom } from "jotai";
+import { formatDateString } from "../constants/helpers";
 
 export const currentDateAtom = atom(new Date());
 
 export const currentDayAtom = atom((get) => getDay(get(currentDateAtom)));
 
 export const formattedDateAtom = atom<string>((get) =>
-  format(get(currentDateAtom), "eeee, d 'de' MMMM", { locale: ptBR }).replace(
-    /^\w/,
-    (c) => c.toUpperCase(),
-  ),
+  formatDateString(get(currentDateAtom)),
 );
