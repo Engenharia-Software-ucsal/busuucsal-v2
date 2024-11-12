@@ -1,0 +1,426 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NextDeparturesList /> renders NextDeparturesList component 1`] = `
+[
+  <View
+    className="flex-row gap-2 mt-20 items-center"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="24"
+      bbWidth="24"
+      focusable={false}
+      height={24}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      role="img"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+      vbHeight={24}
+      vbWidth={24}
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <RNSVGGroup
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "type": 2,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth="2"
+      >
+        <RNSVGCircle
+          cx="12"
+          cy="12"
+          propList={
+            [
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          r="10"
+          stroke={
+            {
+              "type": 2,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth="2"
+        />
+        <RNSVGPath
+          d="M12 6 12 12 16 14"
+          propList={
+            [
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "type": 2,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth="2"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      accessibilityRole="header"
+      style={
+        {
+          "fontSize": 37.44,
+          "fontWeight": "bold",
+          "marginVertical": 32,
+        }
+      }
+      testID="next_departures_title"
+    >
+      Próximos horários
+    </Text>
+  </View>,
+  <View
+    className="w-full px-10 mt-10 mb-14"
+  >
+    <View
+      className="p-6 rounded-xl bg-background-0 w-full max-h-[200px]"
+    >
+      <View
+        className="flex-col gap-6"
+      >
+        <View
+          className="flex-row justify-between"
+        >
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "fontSize": 32,
+                "fontWeight": "bold",
+                "marginVertical": 42.56,
+              }
+            }
+          >
+            Saída
+          </Text>
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "fontSize": 32,
+                "fontWeight": "bold",
+                "marginVertical": 42.56,
+              }
+            }
+          >
+            Chegada
+          </Text>
+        </View>
+        <RCTScrollView
+          ItemSeparatorComponent={[Function]}
+          ListEmptyComponent={[Function]}
+          data={
+            [
+              {
+                "arrival": "10:20 h",
+                "departure": "9:55 h",
+              },
+              {
+                "arrival": "11:10 h",
+                "departure": "10:45 h",
+              },
+              {
+                "arrival": "12:00 h",
+                "departure": "11:35 h",
+              },
+              {
+                "arrival": "12:50 h",
+                "departure": "12:25 h",
+              },
+              {
+                "arrival": "18:10 h",
+                "departure": "17:10 h",
+              },
+              {
+                "arrival": "18:50 h",
+                "departure": "18:30 h",
+              },
+              {
+                "arrival": "20:35 h",
+                "departure": "20:10 h",
+              },
+              {
+                "arrival": "21:50 h",
+                "departure": "21:25 h",
+              },
+              {
+                "arrival": "22:10 h",
+                "departure": "21:50 h",
+              },
+            ]
+          }
+          getItem={[Function]}
+          getItemCount={[Function]}
+          keyExtractor={[Function]}
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={0.0001}
+          stickyHeaderIndices={[]}
+          style={
+            {
+              "maxHeight": 100,
+            }
+          }
+          viewabilityConfigCallbackPairs={[]}
+        >
+          <View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  9:55 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  10:20 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  10:45 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  11:10 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  11:35 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  12:00 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  12:25 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  12:50 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  17:10 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  18:10 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  18:30 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  18:50 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  20:10 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  20:35 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  21:25 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  21:50 h
+                </Text>
+              </View>
+              <View
+                className="mt-4"
+              />
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                className="flex-row justify-between"
+              >
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  21:50 h
+                </Text>
+                <Text
+                  className="text-typography-700 font-body text-base"
+                >
+                  22:10 h
+                </Text>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>,
+]
+`;
