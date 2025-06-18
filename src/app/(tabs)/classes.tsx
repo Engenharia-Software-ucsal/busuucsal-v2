@@ -1,8 +1,4 @@
-import {
-  currentClassRoomByDateAtom,
-  currentEarlyClassAtom,
-} from "@/atoms/classes";
-import { currentDateAtom, formattedDateAtom } from "@/atoms/date";
+import { formattedDateAtom } from "@/atoms/date";
 import { Container } from "@/components/container";
 import { TextWithLabel } from "@/components/text-with-label";
 import { Box } from "@/components/ui/box";
@@ -13,24 +9,28 @@ import { HStack } from "@/components/ui/hstack";
 import { Icon } from "@/components/ui/icon";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
-import { useFocusEffect } from "@react-navigation/core";
-import { useAtomValue, useSetAtom } from "jotai";
-import { Clock, DoorOpen, GraduationCap } from "lucide-react-native";
-import React, { useCallback } from "react";
+import { useAtomValue } from "jotai";
+import { Clock, DoorOpen, GraduationCap, Loader } from "lucide-react-native";
+import React from "react";
 import { FlatList } from "react-native";
+import { useFetchDailyClass } from "@/api/fetch-daily-class";
 
 export default function ClassesScreen() {
-  const currentClassRoomToday = useAtomValue(currentClassRoomByDateAtom);
+  const { data, isLoading } = useFetchDailyClass({
+    enable: true,
+  });
+
   const todayTitle = useAtomValue(formattedDateAtom);
-  const refreshDate = useSetAtom(currentDateAtom);
 
-  useFocusEffect(
-    useCallback(() => {
-      refreshDate(new Date());
-    }, [refreshDate]),
-  );
+  console.log(data);
 
-  const earlyClass = useAtomValue(currentEarlyClassAtom);
+  if (isLoading || !data) {
+    return (
+      <Container>
+        <Loader />
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -43,14 +43,14 @@ export default function ClassesScreen() {
         <Center>
           <Box className="mt-10 w-[200px] h-[200px] border border-blue-400 rounded-full">
             <VStack space="md" className="justify-center items-center flex-1">
-              {earlyClass?.room ? (
+              {data?.room ? (
                 <>
                   <HStack className="" space="md">
                     <Text className="text-2xl ">Sala Atual</Text>
                   </HStack>
-                  <Heading className="text-3xl ">{earlyClass?.room}</Heading>
+                  <Heading className="text-3xl ">{data?.room}</Heading>
 
-                  <Text className="text-xl ">{earlyClass?.date}</Text>
+                  <Text className="text-xl ">19:00</Text>
                 </>
               ) : (
                 <VStack className="items-center" space="md">
@@ -65,17 +65,12 @@ export default function ClassesScreen() {
 
         <FlatList
           ItemSeparatorComponent={() => <Box className="my-2" />}
-          data={currentClassRoomToday?.classes}
-          keyExtractor={(classRoom) =>
-            `${classRoom.startAt}-${classRoom.endAt}`
-          }
+          data={[data]}
+          keyExtractor={(classRoom) => `${classRoom.id}-${classRoom.dayNumber}`}
           renderItem={({ item: classRoom }) => (
-            <Card
-              className="mx-2"
-              key={`${classRoom.startAt}-${classRoom.endAt}`}
-            >
+            <Card className="mx-2">
               <VStack space="md">
-                <Heading>{classRoom.name}</Heading>
+                <Heading>{classRoom.subject}</Heading>
 
                 <TextWithLabel
                   icon={<Icon as={GraduationCap} size="md" />}
@@ -86,7 +81,7 @@ export default function ClassesScreen() {
                 <TextWithLabel
                   icon={<Icon as={Clock} size="md" />}
                   label={"Horário:"}
-                  value={`${classRoom.startAt} - ${classRoom.endAt}`}
+                  value={`19:00 - 21:30`}
                 />
 
                 <TextWithLabel
