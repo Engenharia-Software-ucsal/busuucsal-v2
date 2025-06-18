@@ -30,7 +30,7 @@ export default function ClassesScreen() {
 		);
 	}
 
-	const parsedClasses = [data, data].map((item) => ({ ...item, id: Date.now().toString() }));
+	const parsedClasses = [data, data].map((item) => ({ ...item, id: Math.random().toString() }));
 
 	return (
 		<Container>
