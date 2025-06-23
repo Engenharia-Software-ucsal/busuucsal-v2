@@ -1,6 +1,5 @@
 import { useAtomValue } from "jotai";
 import { Clock, DoorOpen, GraduationCap, Loader } from "lucide-react-native";
-import React from "react";
 import { FlatList } from "react-native";
 import { useFetchDailyClass } from "@/api/fetch-daily-class";
 import { formattedDateAtom } from "@/atoms/date";
@@ -20,8 +19,6 @@ export default function ClassesScreen() {
 
 	const todayTitle = useAtomValue(formattedDateAtom);
 
-	console.log(data);
-
 	if (isLoading || !data) {
 		return (
 			<Container>
@@ -30,7 +27,7 @@ export default function ClassesScreen() {
 		);
 	}
 
-	const parsedClasses = [data, data].map((item) => ({ ...item, id: Math.random().toString() }));
+	const firstClassroom = data[0];
 
 	return (
 		<Container>
@@ -43,12 +40,12 @@ export default function ClassesScreen() {
 				<Center>
 					<Box className="mt-10 w-[200px] h-[200px] border border-blue-400 rounded-full">
 						<VStack space="md" className="justify-center items-center flex-1">
-							{data?.room ? (
+							{firstClassroom?.room ? (
 								<>
 									<HStack className="" space="md">
 										<Text className="text-2xl ">Sala Atual</Text>
 									</HStack>
-									<Heading className="text-3xl ">{data?.room}</Heading>
+									<Heading className="text-3xl ">{firstClassroom?.room}</Heading>
 
 									<Text className="text-xl ">19:00</Text>
 								</>
@@ -63,7 +60,7 @@ export default function ClassesScreen() {
 
 				<FlatList
 					ItemSeparatorComponent={() => <Box className="my-2" />}
-					data={parsedClasses}
+					data={data}
 					keyExtractor={(classRoom) => `${classRoom.id}-${classRoom.dayNumber}`}
 					renderItem={({ item: classRoom }) => (
 						<Card className="mx-2">
@@ -76,7 +73,7 @@ export default function ClassesScreen() {
 									value={classRoom.teacher}
 								/>
 
-								<TextWithLabel icon={<Icon as={Clock} size="md" />} label={"Horário:"} value={"19:00 - 21:30"} />
+								<TextWithLabel icon={<Icon as={Clock} size="md" />} label={"Horário:"} value={classRoom.time} />
 
 								<TextWithLabel icon={<Icon as={DoorOpen} size="md" />} label={"Sala:"} value={classRoom.room} />
 							</VStack>

@@ -21,7 +21,13 @@ export async function fetchDailyClass() {
 }
 
 export function useFetchDailyClass() {
-	const { isPending, data } = useQuery({ queryKey: fetchDailyClass.name, request: fetchDailyClass });
+	const { isPending, data: results } = useQuery({ queryKey: fetchDailyClass.name, request: fetchDailyClass });
+
+	const data = [results, results].map((item, index) => ({
+		...item,
+		id: Math.random().toString(),
+		time: index === 0 ? "19:00 - 20:30" : "20:30 - 21:30",
+	}));
 
 	return {
 		data,
