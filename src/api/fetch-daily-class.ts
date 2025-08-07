@@ -1,8 +1,6 @@
 import { useQuery } from "@/atoms/query-manager";
 import { okamiNotifierApi } from "@/lib/axios";
 
-export type LoadingState = "idle" | "pending" | "success" | "error" | "invalidating";
-
 export interface ClassRoom {
 	created_at: string;
 	day: string;

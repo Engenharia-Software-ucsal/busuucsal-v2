@@ -1,4 +1,3 @@
-import { useWindowDimensions } from "react-native";
 import { HStack } from "./ui/hstack/index";
 import { Text } from "./ui/text";
 
