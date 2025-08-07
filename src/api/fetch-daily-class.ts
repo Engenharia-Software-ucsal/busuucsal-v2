@@ -3,34 +3,25 @@ import { okamiNotifierApi } from "@/lib/axios";
 
 export type LoadingState = "idle" | "pending" | "success" | "error" | "invalidating";
 
-export type ClassRoom = {
-	id: number;
+export interface ClassRoom {
 	created_at: string;
-	dayNumber: number;
-	subject: string;
-	room: string;
-	teacher: string;
-	semester_id: number;
 	day: string;
-};
+	dayNumber: number;
+	end_at: string;
+	id: number;
+	room: string;
+	semester_id: number;
+	start_at: string;
+	subject: string;
+	teacher: string;
+}
 
 export async function fetchDailyClass() {
-	const { data } = await okamiNotifierApi.get<ClassRoom>("/classroom/daily");
+	const { data } = await okamiNotifierApi.get<ClassRoom[]>("/classroom/daily?weekDay=3");
 
 	return data;
 }
 
 export function useFetchDailyClass() {
-	const { isPending, data: results } = useQuery({ queryKey: fetchDailyClass.name, request: fetchDailyClass });
-
-	const data = [results, results].map((item, index) => ({
-		...item,
-		id: Math.random().toString(),
-		time: index === 0 ? "19:00 - 20:30" : "20:30 - 21:30",
-	}));
-
-	return {
-		data,
-		isLoading: isPending,
-	};
+	return useQuery({ queryKey: fetchDailyClass.name, request: fetchDailyClass });
 }
