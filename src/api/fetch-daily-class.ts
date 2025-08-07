@@ -17,7 +17,7 @@ export interface ClassRoom {
 }
 
 export async function fetchDailyClass() {
-	const { data } = await okamiNotifierApi.get<ClassRoom[]>("/classroom/daily?weekDay=3");
+	const { data } = await okamiNotifierApi.get<ClassRoom[]>("/classroom/daily");
 
 	return data;
 }
