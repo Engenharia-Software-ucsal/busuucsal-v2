@@ -45,9 +45,9 @@ export default function ClassesScreen() {
 								{firstClassroom?.room ? (
 									<>
 										<HStack className="" space="md">
-											<Text className="text-2xl ">Sala Atual</Text>
+											<Text className="text-xl ">Sala Atual</Text>
 										</HStack>
-										<Heading className="text-3xl ">{firstClassroom?.room}</Heading>
+										<Heading className="text-2xl ">{firstClassroom?.room}</Heading>
 
 										<Text className="text-xl ">19:00</Text>
 									</>
