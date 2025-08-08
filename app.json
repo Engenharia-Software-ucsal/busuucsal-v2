@@ -21,7 +21,8 @@
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.luminuszz.busuucsalv2"
+			"package": "com.luminuszz.busuucsalv2",
+			"permissions": ["ACCESS_FINE_LOCATION", "ACCESS_BACKGROUND_LOCATION"]
 		},
 		"web": {
 			"bundler": "metro",

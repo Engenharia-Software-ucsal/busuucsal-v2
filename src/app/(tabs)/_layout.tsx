@@ -1,16 +1,30 @@
 import * as Location from "expo-location";
+import * as Notifications from "expo-notifications";
+import { AndroidNotificationPriority } from "expo-notifications/src/Notifications.types";
 import { Tabs } from "expo-router";
 import * as TaskManager from "expo-task-manager";
 import { useEffect } from "react";
+import { fetchDailyClass } from "@/api/fetch-daily-class";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+Notifications.setNotificationHandler({
+	handleNotification: async () => ({
+		shouldShowBanner: true,
+		shouldShowList: true,
+		shouldPlaySound: false,
+		shouldSetBadge: false,
+		priority: AndroidNotificationPriority.HIGH,
+		shouldShowAlert: true,
+	}),
+});
+
 const taskName = "update-user-location";
 
 const usalCordinates = {
-	latidade: -12.948442479406221,
-	longitude: -38.413382028252094,
+	latidade: -12.947488,
+	longitude: -38.413094,
 };
 
 const TOTAL_DISTANCE_RADIUS = 1000;
@@ -20,16 +34,28 @@ type EventType = {
 	region: Location.LocationRegion;
 };
 
-TaskManager.defineTask<EventType>("listUserLocationUpdate", async ({ data, error }) => {
+TaskManager.defineTask<EventType>(taskName, async ({ data, error }) => {
 	if (error) {
 		console.error("Error in location task:", error);
 		return;
 	}
 
+	console.log({ data });
+
 	const isEnterInUcasl = data?.eventType === Location.GeofencingEventType.Enter;
 
 	if (isEnterInUcasl) {
-		console.log("User entered the UCASL area");
+		const classDetails = await fetchDailyClass();
+
+		for (const classDetail of classDetails) {
+			await Notifications.scheduleNotificationAsync({
+				content: {
+					title: `Aula de ${classDetail.subject} com ${classDetail.teacher}, sala: ${classDetail.room}`,
+					body: `Sua aula de ${classDetail.subject} com ${classDetail.teacher} começa às ${classDetail.start_at}.`,
+				},
+				trigger: null,
+			});
+		}
 	}
 });
 
@@ -64,6 +90,20 @@ export default function TabLayout() {
 				}
 			}
 		})();
+	}, []);
+
+	useEffect(() => {
+		Notifications.getPermissionsAsync().then((permission) => {
+			if (!permission.granted) {
+				Notifications.requestPermissionsAsync().then((permission) => {
+					if (permission.granted) {
+						console.log("Notification permissions granted");
+					} else {
+						console.log("Notification permissions not granted");
+					}
+				});
+			}
+		});
 	}, []);
 
 	return (
