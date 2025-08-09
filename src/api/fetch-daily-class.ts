@@ -14,8 +14,8 @@ export interface ClassRoom {
 	teacher: string;
 }
 
-export async function fetchDailyClass() {
-	const currentDay = new Date().getDay();
+export async function fetchDailyClass(day?: number) {
+	const currentDay = day ?? new Date().getDay();
 
 	const { data } = await okamiNotifierApi.get<ClassRoom[]>("/classroom/daily", {
 		params: {
